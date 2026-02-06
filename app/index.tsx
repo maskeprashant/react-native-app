@@ -5,19 +5,23 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function Index() {
   return (
     <SafeAreaView className="h-full bg-white">
-      <View className="flex-1 flex-col justify-center items-center bg-white p-8">
-        <View className="mb-8 mt-16">
+      <View className="flex-1 flex-col justify-center items-center bg-white p-2">
+        <View className="mb-16 h-[500px] mt-1 flex justify-center items-center">
           <Image
             source={require("@/assets/images/list.png")}
-            className="w-[100px] h-[100px]"
+            className="w-[300px] h-[300px]"
           />
         </View>
-        <Text className="text-xl font-bold text-blue-500">
-          Welcome to Nativewind!
+
+        <Text className=" font-bold text-blue-500 uppercase text-4xl">
+          Study tracker
         </Text>
-        <View className="m-10">
-          <Link href="/(tabs)" className="bg-blue-500 px-4 py-2 rounded">
-            <Text className="text-white text-lg">Go to Tabs</Text>
+        <Text className="text-l text-blue-300 my-5 text-center">
+          A study tracker app tracks your study time and provides reports
+        </Text>
+        <View className="m-10  w-full text-center flex justify-center">
+          <Link href="/(tabs)" className="bg-yellow-500 p-4 rounded-lg">
+            <Text className="text-white text-xl text-center">Go start</Text>
           </Link>
         </View>
       </View>
