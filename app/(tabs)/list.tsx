@@ -2,14 +2,14 @@ import React from "react";
 import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const Home = () => {
+const List = () => {
   return (
     <SafeAreaView className="h-full bg-white">
       <View>
-        <Text>Home</Text>
+        <Text>List</Text>
       </View>
     </SafeAreaView>
   );
 };
 
-export default Home;
+export default List;
