@@ -1,28 +1,43 @@
-import { Link } from "expo-router";
-import { Image, Text, View } from "react-native";
+import { useRouter } from "expo-router";
+import React from "react";
+import { Image, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function Index() {
+export default function WelcomeScreen() {
+  const router = useRouter();
+
   return (
-    <SafeAreaView className="h-full bg-white">
-      <View className="flex-1 flex-col justify-center items-center bg-white p-2">
-        <View className="mb-16 h-[500px] mt-1 flex justify-center items-center">
+    <SafeAreaView className="flex-1 bg-white">
+      <View className="flex-1 justify-between items-center px-6 py-8">
+        {/* Image Section - 70% height */}
+        <View className="w-full flex-[0.8] justify-center items-center">
           <Image
-            source={require("@/assets/images/list.png")}
-            className="w-[300px] h-[300px]"
+            source={require("@/assets/images/list.png")} // Replace with your image path
+            className="w-full h-full"
+            resizeMode="contain"
           />
         </View>
 
-        <Text className=" font-bold text-blue-500 uppercase text-4xl">
-          Study tracker
-        </Text>
-        <Text className="text-l text-blue-300 my-5 text-center">
-          A study tracker app tracks your study time and provides reports
-        </Text>
-        <View className="m-10  w-full text-center flex justify-center">
-          <Link href="/(tabs)" className="bg-yellow-500 p-4 rounded-lg">
-            <Text className="text-white text-xl text-center">Go start</Text>
-          </Link>
+        {/* Text Content Section */}
+        <View className="flex-[0.2] justify-center items-center space-y-3">
+          <Text className="text-4xl font-bold text-gray-900 text-center">
+            AppName
+          </Text>
+          <Text className="text-base text-gray-600 text-center px-4">
+            Your perfect slogan goes here
+          </Text>
+        </View>
+
+        {/* Button Section */}
+        <View className="flex-[0.1] w-full justify-end">
+          <Pressable
+            onPress={() => router.push("/(tabs)")} // Update with your route
+            className="bg-blue-600 py-4 rounded-full active:bg-blue-700"
+          >
+            <Text className="text-white text-center text-lg font-semibold">
+              Get Started
+            </Text>
+          </Pressable>
         </View>
       </View>
     </SafeAreaView>
