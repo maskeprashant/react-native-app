@@ -293,10 +293,15 @@ export default function StudySessionScreen(): JSX.Element {
             </View>
 
             {/* Summary Card with Icons */}
-            <View className="bg-violet-700 my-4 p-6 rounded-3xl shadow-2xl space-y-3">
+            <View className="bg-white/40 blur-2xl border border-white  my-4 p-6 rounded-3xl shadow-2xl space-y-3">
               <View className="flex-row items-center space-x-2 mb-2">
-                <Ionicons name="calendar" size={16} color="white" />
-                <Text className="text-white font-semibold">
+                <Ionicons
+                  name="calendar"
+                  size={16}
+                  color="white"
+                  className="mr-2"
+                />
+                <Text className="text-white text-2xl font-semibold">
                   {formatDate(date)}
                 </Text>
               </View>
@@ -305,14 +310,25 @@ export default function StudySessionScreen(): JSX.Element {
                   name={SUBJECT_ICONS[subject!]}
                   size={16}
                   color="white"
+                  className="mr-2"
                 />
                 <Text className="text-white font-semibold">{subject}</Text>
                 <Text className="text-white/80">•</Text>
-                <Ionicons name={TASK_ICONS[task!]} size={16} color="white" />
+                <Ionicons
+                  name={TASK_ICONS[task!]}
+                  size={16}
+                  color="white"
+                  style={{ marginRight: 2 }}
+                />
                 <Text className="text-white font-semibold">{task}</Text>
               </View>
               <View className="flex-row items-center space-x-2 mb-1">
-                <Ionicons name="repeat" size={16} color="white" />
+                <Ionicons
+                  name="repeat"
+                  size={16}
+                  color="white"
+                  className="mr-2"
+                />
                 <Text className="text-white font-semibold">
                   {sessions} sessions × {duration} min
                 </Text>
