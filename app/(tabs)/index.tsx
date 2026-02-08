@@ -150,7 +150,7 @@ export default function StudySessionScreen(): JSX.Element {
     <SafeAreaView className="flex-1 text-gray-900">
       <ImageBackground
         source={IMAGES.backgroundImage}
-        className="w-full h-[100%] flex-1 absolute top-0 left-0"
+        className="w-full h-[100vh] flex-1 absolute top-0 left-0"
         alt=""
       />
       <ScrollView className="flex-1 px-4 pt-6">
@@ -161,13 +161,13 @@ export default function StudySessionScreen(): JSX.Element {
             <View className="space-y-3 mb-4">
               <View className="flex-row items-center space-x-3">
                 <View className="bg-slate-500 p-3 rounded-2xl mr-4">
-                  <Ionicons name="school" size={32} color="#818CF8" />
+                  <Ionicons name="school" size={32} color="violet" />
                 </View>
                 <View className="flex-1">
-                  <Text className="text-gray-700 text-4xl font-bold">
+                  <Text className="text-white text-4xl font-bold">
                     Study Session
                   </Text>
-                  <Text className="text-slate-600 text-base mt-1">
+                  <Text className="text-slate-100 text-base mt-1">
                     Build your perfect learning routine
                   </Text>
                 </View>
@@ -176,7 +176,7 @@ export default function StudySessionScreen(): JSX.Element {
 
             {/* Main Card with Glass Panel Effect */}
             <View
-              className="bg-white/10 border border-white/20 rounded-2xl p-5 shadow-lg backdrop-blur-sm"
+              className="bg-blue-500/10 border border-white/20 rounded-2xl p-5 shadow-lg backdrop-blur-sm"
               style={{
                 backgroundColor: "rgba(255, 255, 255, 0.4)",
                 borderWidth: 1,
@@ -284,16 +284,16 @@ export default function StudySessionScreen(): JSX.Element {
             <View className="flex-row items-center justify-between">
               <View className="flex-row items-center space-x-3">
                 <View className="bg-indigo-500/20 p-3 rounded-2xl">
-                  <Ionicons name="timer" size={28} color="#818CF8" />
+                  <Ionicons name="timer" size={28} color="#ffffff/2" />
                 </View>
-                <Text className="text-gray-600 text-3xl ml-2 font-bold">
+                <Text className="text-3xl ml-4 font-bold text-white">
                   Focus Mode
                 </Text>
               </View>
             </View>
 
             {/* Summary Card with Icons */}
-            <View className="bg-violet-300 my-4 p-6 rounded-3xl shadow-2xl space-y-3">
+            <View className="bg-violet-700 my-4 p-6 rounded-3xl shadow-2xl space-y-3">
               <View className="flex-row items-center space-x-2 mb-2">
                 <Ionicons name="calendar" size={16} color="white" />
                 <Text className="text-white font-semibold">
@@ -356,14 +356,14 @@ export default function StudySessionScreen(): JSX.Element {
               <Text className="text-slate-800 uppercase text-sm tracking-widest my-4">
                 Session Progress
               </Text>
-              <View className="flex-row flex-wrap gap-3">
+              <View className="flex-row flex-wrap gap-3 my-4">
                 {[...Array(sessions ?? 0)].map((_, i) => {
                   const done = completedSessions.includes(i);
                   const active = i === currentSession && !done;
                   return (
                     <View
                       key={i}
-                      className={`w-[30%] aspect-square rounded-2xl items-center justify-center shadow-lg ${
+                      className={`w-[30%] flex h-30 rounded-2xl items-center justify-center shadow-lg ${
                         done
                           ? "bg-green-500"
                           : active
@@ -537,7 +537,8 @@ function SubjectGrid({
             <Ionicons
               name={SUBJECT_ICONS[item]}
               size={20}
-              color={active ? "indigo" : "white"}
+              color={active ? "gray" : "indigo"}
+              style={{ marginRight: 10 }}
             />
             <Text
               className={`${active ? "text-gray-900 font-bold" : "text-white"}`}
