@@ -1,44 +1,73 @@
-import { useRouter } from "expo-router";
+// screens/HomeScreen.tsx
+import { useTheme } from "@/app/context/ThemeContext";
+import { colors } from "@/constants/colors";
 import React from "react";
-import { Image, Pressable, Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Card from "./components/Card";
 
-export default function WelcomeScreen() {
-  const router = useRouter();
+export default function HomeScreen() {
+  const { isDark } = useTheme();
+  const theme = isDark ? colors.dark : colors.light;
+
+  const getGreeting = (): string => {
+    const hour = new Date().getHours();
+    if (hour < 12) return "Good Morning";
+    if (hour < 18) return "Good Afternoon";
+    return "Good Evening";
+  };
+
+  const getFormattedDate = (): string => {
+    const now = new Date();
+    return now.toLocaleDateString("en-US", {
+      year: "numeric",
+      weekday: "long",
+      month: "short",
+      day: "numeric",
+    });
+  };
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
-      <View className="flex-1 justify-between items-center px-6 py-8">
-        {/* Image Section - 70% height */}
-        <View className="w-full flex-[0.8] justify-center items-center">
-          <Image
-            source={require("@/assets/images/list.png")} // Replace with your image path
-            className="w-full h-full"
-            resizeMode="contain"
-          />
-        </View>
-
-        {/* Text Content Section */}
-        <View className="flex-[0.2] justify-center items-center space-y-3">
-          <Text className="text-4xl font-bold text-gray-900 text-center">
-            AppName
-          </Text>
-          <Text className="text-base text-gray-600 text-center px-4">
-            Your perfect slogan goes here
-          </Text>
-        </View>
-
-        {/* Button Section */}
-        <View className="flex-[0.1] w-full justify-end">
-          <Pressable
-            onPress={() => router.push("/(tabs)")} // Update with your route
-            className="bg-blue-600 py-4 rounded-full active:bg-blue-700"
-          >
-            <Text className="text-white text-center text-lg font-semibold">
-              Get Started
+    <SafeAreaView
+      className="flex-1"
+      style={{ backgroundColor: theme.background }}
+    >
+      {/* Header */}
+      <View className="px-6 py-4">
+        <View className="flex-row items-center justify-between">
+          {/* Greeting and Date */}
+          <View className="flex-1">
+            <Text className="text-3xl font-bold" style={{ color: theme.text }}>
+              {getGreeting()} 👋
             </Text>
-          </Pressable>
+            <Text
+              className="text-base mt-1"
+              style={{ color: theme.textSecondary }}
+            >
+              {getFormattedDate()}
+            </Text>
+          </View>
+
+          {/* Avatar */}
+          <TouchableOpacity className="ml-4">
+            <View
+              className="w-12 h-12 rounded-full items-center justify-center border-2"
+              style={{
+                backgroundColor: theme.primary,
+                borderColor: theme.primary + "50",
+              }}
+            >
+              <Text className="text-white text-xl font-bold">U</Text>
+            </View>
+          </TouchableOpacity>
         </View>
+      </View>
+
+      {/* Rest of the content */}
+      <View className="flex-1">
+        <Card>
+          <Text>Content goes here</Text>
+        </Card>
       </View>
     </SafeAreaView>
   );
